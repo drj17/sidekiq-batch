@@ -263,19 +263,6 @@ module Sidekiq
       end
 
       def cleanup_redis(bid)
-        Sidekiq.logger.debug {"Cleaning redis of batch #{bid}"}
-        Sidekiq.redis do |r|
-          r.del(
-            "BID-#{bid}",
-            "BID-#{bid}-callbacks-complete",
-            "BID-#{bid}-callbacks-success",
-            "BID-#{bid}-failed",
-
-            "BID-#{bid}-success",
-            "BID-#{bid}-complete",
-            "BID-#{bid}-jids",
-          )
-        end
       end
 
     private
